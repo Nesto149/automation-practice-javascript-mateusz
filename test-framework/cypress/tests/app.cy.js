@@ -41,7 +41,7 @@ describe('TodoMVC - React', function () {
 
 				// exampleObj.false-data.falseWithName.one
 			});
-
+			TODO_ITEM_ONE = "Making a cup of coffee";
 			cy.get('.new-todo').type(TODO_ITEM_ONE).type('{enter}');
 
 			cy.get('.todo-list li').should('have.length', 1);
@@ -59,6 +59,8 @@ describe('TodoMVC - React', function () {
 		// https://on.cypress.io/as
 
 		it('should allow me to add todo items', function () {
+			TODO_ITEM_ONE = "Taking out the trash";
+			TODO_ITEM_TWO = "Folding clean laundry";
 			// create 1st todo
 			cy.get('.new-todo').type(TODO_ITEM_ONE).type('{enter}');
 
@@ -90,12 +92,17 @@ describe('TodoMVC - React', function () {
 		});
 
 		it('should clear text input field when an item is added', function () {
+			TODO_ITEM_ONE = "Writing a quick email";
 			cy.get('.new-todo').type(TODO_ITEM_ONE).type('{enter}');
 
 			cy.get('.new-todo').should('have.text', '');
 		});
 
 		it('should append new items to the bottom of the list', function () {
+			TODO_ITEM_ONE = "Reading a news article";
+			TODO_ITEM_TWO = "Refilling the water bottle";
+			TODO_ITEM_THREE = "Locking the front door";
+			
 			// this is an example of a custom command
 			// defined in cypress/support/commands.js
 			cy.createDefaultTodos().as('todos');
@@ -116,6 +123,7 @@ describe('TodoMVC - React', function () {
 		});
 
 		it('should show #main and #footer when items added', function () {
+			TODO_ITEM_ONE = "Going for a short walk";
 			cy.createTodo(TODO_ITEM_ONE);
 			cy.get('.main').should('be.visible');
 			cy.get('.footer').should('be.visible');
@@ -193,6 +201,9 @@ describe('TodoMVC - React', function () {
 		// - cy.clear    https://on.cypress.io/api/clear
 
 		it('should allow me to mark items as complete', function () {
+			TODO_ITEM_ONE = "Watering the houseplants";
+			TODO_ITEM_TWO = "Wiping the kitchen counter";
+			
 			// we are aliasing the return value of
 			// our custom command 'createTodo'
 			//
@@ -212,6 +223,8 @@ describe('TodoMVC - React', function () {
 		});
 
 		it('should allow me to un-mark items as complete', function () {
+			TODO_ITEM_TWO = "Setting an alarm clock";
+			
 			cy.createTodo('kjlkhggjhgk').as('firstTodo');
 			cy.createTodo(TODO_ITEM_TWO).as('secondTodo');
 
@@ -227,6 +240,9 @@ describe('TodoMVC - React', function () {
 		});
 
 		it('should allow me to edit an item', function () {
+			TODO_ITEM_ONE = "Cooking a simple meal";
+			TODO_ITEM_THREE = "Scrolling through news";
+			
 			cy.createDefaultTodos().as('todos');
 
 			cy.get('@todos')
@@ -270,6 +286,9 @@ describe('TodoMVC - React', function () {
 		});
 
 		it('should save edits on blur', function () {
+			TODO_ITEM_ONE = "Checking the to-do list";
+			TODO_ITEM_THREE = "Packing a small bag";
+			
 			cy.get('@todos').eq(1).as('secondTodo').find('label').dblclick();
 
 			cy.get('@secondTodo')
@@ -289,6 +308,9 @@ describe('TodoMVC - React', function () {
 		});
 
 		it('should trim entered text', function () {
+			TODO_ITEM_ONE = "Listening to a podcast";
+			TODO_ITEM_THREE = "Washing the dishes";
+			
 			cy.get('@todos').eq(1).as('secondTodo').find('label').dblclick();
 
 			cy.get('@secondTodo')
@@ -312,6 +334,10 @@ describe('TodoMVC - React', function () {
 		});
 
 		it('should cancel edits on escape', function () {
+			TODO_ITEM_ONE = "Jogging in the morning";
+			TODO_ITEM_TWO = "Turning off the lights";
+			TODO_ITEM_THREE = "Taking a deep breath";
+			
 			cy.get('@todos').eq(1).as('secondTodo').find('label').dblclick();
 
 			cy.get('@secondTodo').find('.edit').clear().type('foo{esc}');
@@ -326,6 +352,9 @@ describe('TodoMVC - React', function () {
 
 	context('Counter', function () {
 		it('should display the current number of todo items', function () {
+			TODO_ITEM_ONE = "Brushing my teeth";
+			TODO_ITEM_TWO = "Feeding the pet";
+			
 			cy.createTodo(TODO_ITEM_ONE);
 			cy.get('.todo-count').contains('1 item left');
 			cy.createTodo(TODO_ITEM_TWO);
@@ -345,6 +374,9 @@ describe('TodoMVC - React', function () {
 		});
 
 		it('should remove completed items when clicked', function () {
+			TODO_ITEM_ONE = "Stretching after work";
+			TODO_ITEM_THREE = "Charging the phone";
+			
 			cy.get('@todos').eq(1).find('.toggle').check();
 
 			cy.get('.clear-completed').click();
@@ -366,6 +398,9 @@ describe('TodoMVC - React', function () {
 
 	context('Persistence', function () {
 		it('should persist its data', function () {
+			TODO_ITEM_ONE = "Making a grocery list";
+			TODO_ITEM_TWO = "Checking the mailbox";
+			
 			// mimicking TodoMVC tests
 			// by writing out this function
 			function testState() {
@@ -404,6 +439,9 @@ describe('TodoMVC - React', function () {
 		});
 
 		it('should allow me to display active items', function () {
+			TODO_ITEM_ONE = "Sending a quick text";
+			TODO_ITEM_THREE = "Organizing my desk";
+			
 			cy.get('@todos').eq(1).find('.toggle').check();
 
 			cy.get('.filters').contains('Active').click();
