@@ -1,0 +1,67 @@
+{
+  "case_1": {
+    "title": "Sprawdzenie, czy pole Counter poprawnie liczy stan listy po użyciu przycisku Clear completed",
+    "initial_data": [
+      {"id": 1, "text": "Kup mleko", "completed": false},
+      {"id": 2, "text": "Zrobić pranie", "completed": true},
+      {"id": 3, "text": "Odebrać paczkę", "completed": false}
+    ],
+    "actions": [
+      {"action": "click", "target": "clear_completed"}
+    ],
+    "expected_result": {
+      "active_count": 2,
+      "remaining_items": [
+        {"id": 1, "text": "Kup mleko", "completed": false},
+        {"id": 3, "text": "Odebrać paczkę", "completed": false}
+      ]
+    }
+  },
+  "case_2": {
+    "title": "Sprawdzenie zabezpieczenia przed SQL Injection/złośliwymi linkami",
+    "initial_data": [],
+    "actions": [
+      {"action": "input", "target": "new_todo", "value": "Test; SELECT * FROM todos;"},
+      {"action": "keypress", "key": "Enter"}
+    ],
+    "expected_result": {
+      "error": "Nieprawidłowy format wprowadzonego tekstu",
+      "list_state": []
+    }
+  },
+  "case_3": {
+    "title": "Sprawdzenie, czy aplikacja pozwoli na stworzenie tego samego elementu w liście (duplikatu)",
+    "initial_data": [
+      {"id": 1, "text": "Zrobić zakupy", "completed": false}
+    ],
+    "actions": [
+      {"action": "input", "target": "new_todo", "value": "Zrobić zakupy"},
+      {"action": "keypress", "key": "Enter"}
+    ],
+    "expected_result": {
+      "error": "Element już istnieje na liście",
+      "list_state": [
+        {"id": 1, "text": "Zrobić zakupy", "completed": false}
+      ]
+    }
+  },
+  "case_4": {
+    "title": "Sprawdzenie, czy aplikacja pozwoli zmienić nazwę elementu na już istniejący na liście (edycja na duplikat)",
+    "initial_data": [
+      {"id": 1, "text": "Wynieść śmieci", "completed": false},
+      {"id": 2, "text": "Podlać kwiaty", "completed": false}
+    ],
+    "actions": [
+      {"action": "double_click", "target": "todo_2"},
+      {"action": "input", "target": "edit_todo", "value": "Wynieść śmieci"},
+      {"action": "keypress", "key": "Enter"}
+    ],
+    "expected_result": {
+      "error": "Nie można użyć nazwy już istniejącego elementu",
+      "list_state": [
+        {"id": 1, "text": "Wynieść śmieci", "completed": false},
+        {"id": 2, "text": "Podlać kwiaty", "completed": false}
+      ]
+    }
+  }
+}
