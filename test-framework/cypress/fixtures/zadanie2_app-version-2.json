@@ -1,0 +1,17 @@
+{
+"case_1": {
+      "title": "Błąd: Status 'completed' nie zapisuje się po przejściu między filtrami",
+      "initial_data": [
+        {"id": 1, "text": "Umyć naczynia", "completed": false},
+        {"id": 2, "text": "Wynieść śmieci", "completed": false}
+      ],
+      "actions": [
+        {"action": "click", "target": "checkbox_1"},
+        {"action": "click", "target": "filter_completed"},
+        {"action": "click", "target": "filter_all"}
+      ],
+      "expected_result": {
+        "bug": "Element 1 powinien pozostać oznaczony jako 'completed', ale wrócił do statusu 'active'"
+      }
+    }
+}  
