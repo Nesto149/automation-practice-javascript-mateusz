@@ -1,0 +1,17 @@
+{
+"version_2": {
+    "case_1": {
+      "title": "Błąd: 'Clear completed' nie usuwa ukończonych zadań",
+      "initial_data": [
+        {"id": 1, "text": "Kupić mleko", "completed": false},
+        {"id": 2, "text": "Zapłacić rachunki", "completed": true}
+      ],
+      "actions": [
+        {"action": "click", "target": "clear_completed"}
+      ],
+      "expected_result": {
+        "bug": "Element 'Zapłacić rachunki' powinien zostać usunięty, ale nadal jest na liście"
+      }
+    }
+  }
+}
