@@ -41,3 +41,12 @@ console.log("----- Zadanie B -----");
 let liczba1 = 20;
 let liczba2 = 30;
 console.log(liczba1 === 50 || liczba2 === 50 || (liczba1 + liczba2) === 50);
+
+// część "C"
+console.log("----- Zadanie C -----");
+let color = ["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
+let o = ["th","st","nd","rd"]
+
+console.log(`1${o[1]} choice is ${color[0]}.`);
+console.log(`2${o[2]} choice is ${color[1]}.`);
+console.log(`3${o[3]} choice is ${color[2]}.`);
