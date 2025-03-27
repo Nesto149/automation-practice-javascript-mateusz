@@ -48,3 +48,31 @@ console.log(user1.getUserData_1());
 
 let user2 = new CartUser('Damian', 'Nowak', 'DamNow', '456456456', '32', '85');
 console.log(user2.getUserData_2());
+
+
+
+// zadanie 1.2
+let library = {
+    'Książka 1': {
+        'Tytuł': ['Rok 1984'],
+        'Autor': ['George Orwell'],
+        'Data wydania': ['1949'],
+        'Ilość stron': ['236']
+    },
+    'Książka 2': {
+        'Tytuł': ['Ojciec chrzestny'],
+        'Autor': ['Mario Puzo'],
+        'Data wydania': ['1969'],
+        'Ilość stron': ['480']
+    },
+    'Książka 3': {
+        'Tytuł': ['Bogactwo i nędza narodów'],
+        'Autor': ['David S. Landes'],
+        'Data wydania': ['2000'],
+        'Ilość stron': ['736']
+    }
+}
+for (let key in library) {
+    let book = library[key];
+    console.log(`Tytuł: ${book["Tytuł"][0]}, Autor: ${book["Autor"][0]}, Data wydania: ${book["Data wydania"][0]}, Ilość stron: ${book["Ilość stron"][0]}`);
+}
