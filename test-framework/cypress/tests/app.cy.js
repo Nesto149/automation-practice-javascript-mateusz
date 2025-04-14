@@ -251,7 +251,7 @@ describe('TodoMVC - React', function () {
 				// TODO: fix this, dblclick should
 				// have been issued to label
 				.find('label')
-				.dblclick();
+				.dblclick('label');
 
 			// clear out the inputs current value
 			// and type a new value

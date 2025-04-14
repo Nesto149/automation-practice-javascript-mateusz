@@ -1,0 +1,5 @@
+{
+    "sqlInjection": "SELECT * FROM todos",
+    "duplicateTasks": ["Zadanie A", "Zadanie A"],
+    "uniqueTasks": ["Napisz testy", "Przeczytaj książkę", "Zrób zakupy"]
+}
