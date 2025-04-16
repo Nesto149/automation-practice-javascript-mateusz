@@ -31,5 +31,13 @@ describe('Testy aplikacji TODOS', () => {
         })
     })
 
-    
+    it('Edycja duplikatu zadania', () => {
+        cy.fixture('testData').then((fixtureData) => {
+            todosPage.addTodo(fixtureData.duplicateTasks[0]);
+            todosPage.addTodo(fixtureData.duplicateTasks[1]);
+            const randomText = `${Math.random().toString(25)}`;
+            todosPage.editFirstTodo(randomText);
+            todosPage.getTodoListItems().first().should('contain.text', randomText);
+        })
+    })
 })
